@@ -2,14 +2,16 @@ import { Component, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import Swiper from 'swiper';
 import { Navigation, Autoplay } from 'swiper/modules';
-import emailjs from 'emailjs-com';
 import { FormsModule } from '@angular/forms';
+import 'zone.js';
+import { EmailService } from '../email.service';
 
 Swiper.use([Navigation, Autoplay]);
 
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.html',
+  standalone: true,
   imports: [CommonModule, FormsModule],
  // styleUrls: ['./landing-page.css'] // se quiser separar, ou use styles.scss
 })
@@ -19,6 +21,8 @@ export class LandingPageComponent implements AfterViewInit {
   public successMessage = '';
   public errorMessage = '';
   public swiper: Swiper | undefined;
+
+  constructor(private emailService: EmailService) {}
 
   services = [
     {
@@ -163,12 +167,11 @@ export class LandingPageComponent implements AfterViewInit {
 
   onSubmit(event: Event) {
     event.preventDefault();
-    console.log('Form submitted:', event);
     this.loading = true;
     this.successMessage = '';
     this.errorMessage = '';
 
-    emailjs.sendForm(
+    this.emailService.sendForm(
       'service_fvr7399',
       'template_bllurfo',
       event.target as HTMLFormElement,

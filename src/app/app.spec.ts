@@ -20,6 +20,7 @@ describe('App', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, emergeware');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Inovação Impulsionada por Inteligência Artificial');
   });
 });
+

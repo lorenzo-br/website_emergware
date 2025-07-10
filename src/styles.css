@@ -318,8 +318,8 @@
   .h-screen {
     height: 100vh;
   }
-  .max-h-120 {
-    max-height: calc(var(--spacing) * 120);
+  .max-h-100 {
+    max-height: calc(var(--spacing) * 100);
   }
   .w-6 {
     width: calc(var(--spacing) * 6);
